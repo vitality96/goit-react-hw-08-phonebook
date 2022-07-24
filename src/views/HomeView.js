@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { NavLink } from 'react-router-dom';
 import { getLoggedIn } from "redux/auth/auth-selectors";
+import { HomeViewContainer, WelcomeMessage, LoginLink, TextContainer, Text } from './styles/HomeView.styled';
 
 const HomeView = () => {
 
@@ -8,20 +8,23 @@ const HomeView = () => {
 
     return (
         <main>
-                <h1> Welcome to Phonebook! </h1>
-                {!isLoggedIn && <p> Please,
-                    <NavLink to="/register">
+            <HomeViewContainer>
+                <WelcomeMessage> Welcome to Phonebook! </WelcomeMessage>
+                {!isLoggedIn && <TextContainer> <p> Please,
+                    <LoginLink to="/register">
                         sign up
-                    </NavLink>
+                    </LoginLink>
                     or
-                    <NavLink to="/login">
+                    <LoginLink to="/login">
                         sign in
-                    </NavLink>
+                    </LoginLink>
                     to continue.
-                </p>}
-                {isLoggedIn && <p> You can manage your phonebook <NavLink to="/contacts">
+                </p>
+                </TextContainer>}
+                {isLoggedIn && <Text> You can manage your phonebook <LoginLink to="/contacts">
                     here.
-                </NavLink> </p>}
+                </LoginLink> </Text>}
+                </HomeViewContainer>
         </main>
     )
 }

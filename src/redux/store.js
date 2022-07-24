@@ -20,18 +20,18 @@ const authPersistConfig = {
 };
 
 export const store = configureStore({
-    reducer: {
-        auth: persistReducer(authPersistConfig, authReducer),
-        contacts: contactReducer,
-    },
+  reducer: {
+    auth: persistReducer(authPersistConfig, authReducer),
+    contacts: contactReducer,
+  },
 
-    middleware(getDefaultMiddleware) {
-        return getDefaultMiddleware({
-            serializableCheck: {
-                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-            },
-        });
-    },
+  middleware(getDefaultMiddleware) {
+    return getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    });
+  },
 });
 
 export const persistor = persistStore(store);
