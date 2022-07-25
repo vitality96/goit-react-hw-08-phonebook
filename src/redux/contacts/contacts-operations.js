@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
@@ -33,6 +34,7 @@ export const removeContact = createAsyncThunk(
     try {
       const response = await axios.delete(`/contacts/${contactId}`);
       if (response.status === 200) {
+        toast.success('Contact is successfully deleted!');
         return contactId;
       } else {
         throw new Error({ message: 'error' });

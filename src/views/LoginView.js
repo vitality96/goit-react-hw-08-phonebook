@@ -23,8 +23,6 @@ const LoginView = () => {
     const handleSubmit = event => {
         event.preventDefault();
         dispatch(logIn({ email, password }));
-        setEmail('');
-        setPassword('');
     };
 
     const handleChangeEmail = event => setEmail(event.target.value);

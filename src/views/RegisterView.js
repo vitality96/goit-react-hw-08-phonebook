@@ -29,9 +29,6 @@ const RegisterView = () => {
             return;
         }
         dispatch(register({ name, email, password }));
-        setName('');
-        setEmail('');
-        setPassword('');
     };
 
     const handleChangeName = event => setName(event.target.value);

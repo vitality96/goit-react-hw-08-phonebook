@@ -1,4 +1,5 @@
 import axios from 'axios';
+import toast from 'react-hot-toast';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const token = {
@@ -16,7 +17,9 @@ const register = createAsyncThunk('auth/register', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
-    alert('Wrong user information! Please try again!');
+    toast.error('Wrong user information! Please try again!', {
+      position: "top-center",
+    });
   }
 });
 
@@ -26,7 +29,9 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
-    alert('Wrong login or password! Please try again!');
+    toast.error('Wrong login or password! Please try again!', {
+      position: "top-center",
+    });
   }
 });
 
