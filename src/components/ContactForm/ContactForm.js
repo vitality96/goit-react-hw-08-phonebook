@@ -23,19 +23,19 @@ export default function ContactForm() {
             number: number,
         };
 
-        if (contact.find(us => us.name === newContact.name)) {
+        if (contact.find(us => us.name.toLowerCase() === newContact.name.toLowerCase())) {
             toast.error('Your contact is already in the list!')
             return;
         }
         dispatch(addContact(newContact));
         toast.success('Contact has been successfully added!')
+        setName('');
+        setNumber('');
     };
 
     const handleSubmit = event => {
         event.preventDefault();
         saveContact(name);
-        setName('');
-        setNumber('');
     };
 
     const handleChangeName = event => setName(event.target.value);
